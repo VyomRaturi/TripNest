@@ -15,6 +15,7 @@ const listingSchema = Joi.object({
                 )
                 .allow("", null),
         }),
+        tags: Joi.array().items(Joi.string()).required(),
     }).required(),
 });
 

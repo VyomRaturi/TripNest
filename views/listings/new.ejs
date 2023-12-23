@@ -16,6 +16,7 @@
                     placeholder="Add a title"
                     type="text"
                     class="form-control"
+                    id="title"
                     required
                 />
                 <div class="valid-feedback">Title looks good!</div>
@@ -27,6 +28,7 @@
                 <textarea
                     name="listing[description]"
                     class="form-control"
+                    id="description"
                     required
                 ></textarea>
                 <div class="valid-feedback">Description looks good!</div>
@@ -36,11 +38,91 @@
             </div>
 
             <div class="mb-3">
+                <span class="tags-txt">Tags :</span>
+                <span class="dropdown tags-dropdowns">
+                    <button
+                        class="btn btn-light dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Select Tags
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Trending
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Rooms
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Iconic Cities
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Mountains
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Castles
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Amazing pools
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Camping
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Farms
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Arctic
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Doms
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="dropdown-item">
+                                Boats
+                            </button>
+                        </li>
+                    </ul>
+                </span>
+                <span class="tags-display"></span>
+            </div>
+
+            <div class="hidden-tags">
+                <input name="listing[tags]" id="hidden-tags-inp" required />
+                <div class="invalid-feedback">
+                    Please select appropriate tags
+                </div>
+            </div>
+
+            <div class="mb-3">
                 <label for="image" class="form-label">Upload Image</label>
                 <input
                     name="listing[image][url]"
                     type="file"
                     class="form-control"
+                    id="image"
                     required
                 />
                 <div class="invalid-feedback">Please upload a valid image</div>
@@ -53,6 +135,7 @@
                         name="listing[price]"
                         placeholder="enter price"
                         class="form-control"
+                        id="price"
                         required
                     />
 
@@ -67,6 +150,7 @@
                         placeholder="enter country"
                         type="text"
                         class="form-control"
+                        id="country"
                         required
                     />
                     <div class="valid-feedback">Country looks good!</div>
@@ -81,6 +165,7 @@
                     placeholder="enter location"
                     type="text"
                     class="form-control"
+                    id="location"
                     required
                 />
                 <div class="valid-feedback">Location looks good!</div>
@@ -91,5 +176,3 @@
         </form>
     </div>
 </div>
-
-<script src="/js/script.js"></script>

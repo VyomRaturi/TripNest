@@ -38,6 +38,96 @@
                 </div>
             </div>
             <br />
+            <span class="tags-txt">Tags :</span>
+            <span class="dropdown tags-dropdowns">
+                <button
+                    class="btn btn-light dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Select Tags
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Trending
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Rooms
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Iconic Cities
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Mountains
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Castles
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Amazing pools
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Camping
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Farms
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Arctic
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Doms
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item">
+                            Boats
+                        </button>
+                    </li>
+                </ul>
+            </span>
+            <span class="tags-display">
+                <% listing.tags.map(tag => tag.trim()).forEach(tag => { %>
+                <span class="badge rounded-pill text-bg-danger">
+                    <%= tag %>
+                    <button
+                        type="button"
+                        class="btn-close tag-remove-btn"
+                        aria-label="Close"
+                        onclick="removeTag('<%= tag %>')"
+                    ></button>
+                </span>
+                <% }) %>
+            </span>
+            <div class="hidden-tags">
+                <input
+                    type="hidden"
+                    name="listing[tags]"
+                    id="hidden-tags-inp"
+                    value="<%= listing.tags.map(tag => tag.trim()).join(',') %>"
+                />
+            </div>
+            <br />
             <div class="mb-3">
                 Original Listing Image <br />
                 <img src="<%= originalImageUrl %>" />
@@ -110,3 +200,26 @@
         </form>
     </div>
 </div>
+
+<script>
+    function addTag(tag) {
+        let tagsInput = document.getElementById("hidden-tags-inp");
+        let tagsDisplay = document.querySelector(".tags-display");
+        if (tagsInput.value) {
+            tagsInput.value += ",";
+        }
+        tagsInput.value += tag;
+        tagsDisplay.innerHTML += `<span class="badge badge-pill badge-primary">${tag}<button type="button" class="close" aria-label="Close" onclick="removeTag('${tag}')"><span aria-hidden="true">&times;</span></button></span>`;
+    }
+
+    function removeTag(tag) {
+        let tagsInput = document.getElementById("hidden-tags-inp");
+        let tags = tagsInput.value.split(",");
+        let index = tags.indexOf(tag);
+        if (index > -1) {
+            tags.splice(index, 1);
+        }
+        tagsInput.value = tags.join(",");
+        event.target.parentNode.remove();
+    }
+</script>

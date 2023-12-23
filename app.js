@@ -15,6 +15,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const Listing = require("./models/listing.js");
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -80,6 +81,31 @@ app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
     next();
+});
+
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
+app.get("/privacy", (req, res) => {
+    res.render("listings/privacy.ejs");
+});
+
+app.get("/terms", (req, res) => {
+    res.render("listings/terms.ejs");
+});
+
+app.get("/search", async (req, res) => {
+    let title = req.query.title;
+    if (!title) {
+        return res.redirect("/listings");
+    }
+    let listings = await Listing.find({ title: title });
+    if (listings.length === 0) {
+        req.flash("error", "No listings found");
+        return res.redirect("/listings");
+    }
+    res.render("listings/search.ejs", { listings });
 });
 
 app.use("/listings", listingRouter);

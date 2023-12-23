@@ -58,3 +58,10 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     }
     next();
 };
+
+module.exports.splitTags = (req, res, next) => {
+    if (req.body.listing.tags) {
+        req.body.listing.tags = req.body.listing.tags.split(",");
+    }
+    next();
+};
