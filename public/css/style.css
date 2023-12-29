@@ -6,6 +6,16 @@ body {
     min-height: 100vh;
 }
 
+.max-width {
+    max-width: 60%;
+    margin: auto;
+}
+@media screen and (max-width: 768px) {
+    .max-width {
+        max-width: 100%;
+    }
+}
+
 .container {
     flex: 1;
 }
@@ -208,4 +218,20 @@ body {
 
 #hidden-tags-inp {
     display: none;
+}
+
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 45%;
+}
+
+.review-card .card-body {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
 }
