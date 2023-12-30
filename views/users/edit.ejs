@@ -1,10 +1,10 @@
 <% layout("/layouts/boilerplate") %> <%- include("../includes/flash.ejs") %>
 
-<div class="max-width-2">
-    <h1 style="text-align: center">SignUp</h1>
+<div class="max-width">
+    <h1 style="text-align: center">Edit your profile</h1>
     <div>
         <form
-            action="/signup"
+            action="/profile/<%= user._id %>/?_method=PUT"
             method="post"
             class="needs-validation"
             novalidate
@@ -17,13 +17,18 @@
                     id="username"
                     type="text"
                     class="form-control"
+                    value="<%= user.username %>"
                     required
                 />
+                <div class="username-warning">
+                    *Users will have to re-login with new username after
+                    changing it
+                </div>
                 <div class="valid-feedback">Looks good!</div>
                 <div class="invalid-feedback">Please add a valid username</div>
             </div>
             <div class="extra-userinfo">
-                <div class="dual-display">
+                <div>
                     <div class="mb-3">
                         <label for="firstname" class="form-label"
                             >First Name</label
@@ -33,14 +38,11 @@
                             id="firstname"
                             type="text"
                             class="form-control"
+                            value="<%= user.firstname %>"
                             required
                         />
-
-                        <div class="invalid-feedback">
-                            Please add a valid first name
-                        </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="lastname" class="form-label"
                             >Last Name</label
                         >
@@ -49,13 +51,14 @@
                             id="lastname"
                             type="text"
                             class="form-control"
+                            value="<%= user.lastname %>"
                             required
                         />
-
-                        <div class="invalid-feedback">
-                            Please add a valid last name
-                        </div>
                     </div>
+                </div>
+                <div class="mb-3">
+                    Original Profile Image <br />
+                    <img src="<%= originalImageUrl %>" />
                 </div>
                 <div class="mb-3">
                     <label for="profileImage" class="form-label"
@@ -73,15 +76,11 @@
                     <input
                         name="phone"
                         id="phone"
-                        type="tel"
-                        pattern="[0-9]{10}"
+                        type="text"
                         class="form-control"
+                        value="<%= user.phone %>"
                         required
                     />
-
-                    <div class="invalid-feedback">
-                        Please add a valid phone number
-                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
@@ -90,69 +89,34 @@
                         id="address"
                         type="text"
                         class="form-control"
+                        value="<%= user.address %>"
                         required
                     />
-
-                    <div class="invalid-feedback">
-                        Please add a valid address
-                    </div>
                 </div>
-                <div class="dual-display">
-                    <div class="mb-3">
-                        <label for="city" class="form-label">City</label>
-                        <input
-                            name="city"
-                            id="city"
-                            type="text"
-                            class="form-control"
-                            required
-                        />
-
-                        <div class="invalid-feedback">
-                            Please add a valid city
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="state" class="form-label">State</label>
-                        <input
-                            name="state"
-                            id="state"
-                            type="text"
-                            class="form-control"
-                            required
-                        />
-
-                        <div class="invalid-feedback">
-                            Please add a valid state
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input
+                        name="city"
+                        id="city"
+                        type="text"
+                        class="form-control"
+                        value="<%= user.city %>"
+                        required
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input
+                        name="state"
+                        id="state"
+                        type="text"
+                        class="form-control"
+                        value="<%= user.state %>"
+                        required
+                    />
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input
-                    name="email"
-                    id="email"
-                    type="email"
-                    class="form-control"
-                    required
-                />
-
-                <div class="invalid-feedback">Please add a valid email</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                    name="password"
-                    id="password"
-                    type="password"
-                    class="form-control"
-                    required
-                />
-
-                <div class="invalid-feedback">Please add a valid password</div>
-            </div>
-            <button class="btn btn-success mt-3 mb-5">SignUp</button>
+            <button class="btn btn-success mt-3 mb-5">Edit</button>
         </form>
     </div>
 </div>

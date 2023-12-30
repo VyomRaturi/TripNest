@@ -5,7 +5,16 @@
     </div>
     <div class="card show-card listing-card">
         <p class="card-text">
+            <% console.log(listing.owner) %>
             <b>Owner :</b><i><%= listing.owner.username %></i>
+
+            <% if (currUser){ %>
+            <a href="/listings/owner/<%= listing.owner._id %>">
+                <span class="badge rounded-pill text-bg-dark mt-1.5 mb-2"
+                    >Owner profile</span
+                ></a
+            >
+            <% } %>
             <br />
             <b>Tags :</b>
             <% listing.tags.map(tag => tag.trim()).forEach(tag => { %>

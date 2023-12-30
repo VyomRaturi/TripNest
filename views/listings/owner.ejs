@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %> <%- include("../includes/flash.ejs") %>
+<div class="max-width-2">
+    <div class="image-div">
+        <img class="display-image" src="<%= user.profileImage.url %>" alt="" />
+    </div>
+    <div class="user-info">
+        <div><b>Username :</b> <%= user.username %></div>
+        <div class="dual-display">
+            <span><b>First name:</b> <%= user.firstname %></span>
+            <span><b>Last name:</b> <%= user.lastname %></span>
+        </div>
+        <div class="dual-display">
+            <span><b>Email:</b> <%= user.email %></span>
+            <span><b>Phone:</b> <%= user.phone %></span>
+        </div>
+        <div class="dual-display">
+            <span><b>City:</b> <%= user.city %></span>
+            <span><b>State:</b> <%= user.state %></span>
+        </div>
+    </div>
+    <% if(user.username==currUser.username){ %>
+    <a href="/profile/edit">
+        <button onclick="" class="btn btn-danger mt-2 mb-5 edit-profile">
+            Edit
+        </button>
+    </a>
+    <% } %>
+</div>

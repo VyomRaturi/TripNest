@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const User = require("../models/user");
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -79,4 +80,10 @@ module.exports.filterListings = async (req, res) => {
     let { tag } = req.params;
     const allListings = await Listing.find({});
     res.render("listings/filter.ejs", { tag, allListings });
+};
+
+module.exports.ownerListings = async (req, res) => {
+    let { ownerId } = req.params;
+    let user = await User.findById(ownerId);
+    res.render("listings/owner.ejs", { user });
 };

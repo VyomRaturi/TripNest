@@ -10,8 +10,15 @@ body {
     max-width: 60%;
     margin: auto;
 }
+.max-width-2 {
+    max-width: 40%;
+    margin: auto;
+}
 @media screen and (max-width: 768px) {
     .max-width {
+        max-width: 100%;
+    }
+    .max-width-2 {
         max-width: 100%;
     }
 }
@@ -234,4 +241,67 @@ body {
 
 .review-card .card-body {
     padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-desktop {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .profile-mobile {
+        display: none !important;
+    }
+}
+
+.profile-desktop {
+    margin-left: 0.5rem;
+}
+
+.profile-mobile {
+    margin-right: 0.5rem;
+}
+
+/* profile page */
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-div {
+    text-align: center;
+}
+
+.display-image {
+    position: relative;
+    width: 80%;
+    object-fit: cover;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-info div {
+    margin-bottom: 1rem;
+}
+
+.dual-display {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-profile {
+    width: 5rem;
+}
+
+.username-warning {
+    color: #fe424d;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    .dual-display {
+        flex-direction: column;
+    }
 }

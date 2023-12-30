@@ -6,11 +6,24 @@ const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
 const userController = require("../controllers/users.js");
 const user = require("../models/user.js");
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
 
 router
     .route("/signup")
     .get(userController.renderSignupForm)
-    .post(wrapAsync(userController.signup));
+    .post(upload.single("profileImage[url]"), wrapAsync(userController.signup));
+
+router.route("/profile").get(userController.renderProfile);
+router.route("/profile/edit").get(userController.renderEditProfile);
+
+router
+    .route("/profile/:id")
+    .put(
+        upload.single("profileImage[url]"),
+        wrapAsync(userController.updateProfile)
+    );
 
 router
     .route("/login")

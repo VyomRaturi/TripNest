@@ -24,6 +24,8 @@ router
         wrapAsync(listingController.createListing)
     );
 
+router.route("/owner/:ownerId").get(wrapAsync(listingController.ownerListings));
+
 //New route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
