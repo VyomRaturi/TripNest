@@ -5,10 +5,7 @@
         ></a>
         <div style="display: flex">
             <% if(currUser){ %>
-            <a
-                class="nav-link profile-mobile"
-                href="/users/<%= currUser._id %>"
-            >
+            <a class="nav-link profile-mobile" href="/profile">
                 <img
                     src="<%= currUser.profileImage.url %>"
                     alt="Profile Image"
